@@ -1,0 +1,180 @@
+body {
+  padding: 10px;
+  font-family: sans-serif;
+}
+.btn-logout {
+  width: 100%;
+  padding: 3px 20px !important;
+  text-align: left !important;
+}
+.affix {
+      top:0;
+      width: 100%;
+      z-index: 9999 !important;
+  }
+  .navbar {
+      margin-bottom: 0px;
+  }
+
+  .affix ~ .container-fluid {
+     position: relative;
+     top: 50px;
+  }
+
+  #all_clients {padding-top:50px;height:500px;color: #fff; background-color: #1E88E5;}
+  #all_managers {padding-top:50px;height:500px;color: #fff; background-color: #673ab7;}
+  #add_client {padding-top:50px;height:500px;color: #fff; background-color: #00bcd4;}
+  #add_manager {padding-top:50px;height:500px;color: #fff; background-color: #009688;}
+
+.logout {
+	float: right;
+	position: relative;
+}
+
+.container {
+  /*max-width: 100%;
+  margin: 0 auto;
+  min-height: 100%;
+  background: white;*/
+  /*border: 1px solid black;*/
+}
+
+.add_manager .add_client {
+
+  background-color: blue;
+  color: white;
+
+}
+
+ 
+header {
+  background: #d2edf4;
+  background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
+  padding: 20px 15px 15px 15px;
+  position: relative;
+}
+ 
+#login-buttons {
+  display: block;
+}
+ 
+h1 {
+  font-size: 1.5em;
+  margin: 0;
+  margin-bottom: 10px;
+  display: inline-block;
+  margin-right: 1em;
+}
+ 
+form {
+  margin-top: 10px;
+  margin-bottom: -10px;
+  position: relative;
+}
+ 
+.new-task input {
+  box-sizing: border-box;
+  padding: 10px 0;
+  background: transparent;
+  border: none;
+  width: 100%;
+  padding-right: 80px;
+  font-size: 1em;
+}
+ 
+.new-task input:focus{
+  outline: 0;
+}
+ 
+ul {
+  margin: 0;
+  padding: 0;
+  background: white;
+}
+ 
+.delete {
+  float: right;
+  font-weight: bold;
+  background: none;
+  font-size: 1em;
+  border: none;
+  position: relative;
+}
+ 
+li {
+  position: relative;
+  list-style: none;
+  padding: 15px;
+  border-bottom: #eee solid 1px;
+}
+ 
+li .text {
+  margin-left: 10px;
+}
+ 
+li.checked {
+  color: #888;
+}
+ 
+li.checked .text {
+  text-decoration: line-through;
+}
+ 
+li.private {
+  background: #eee;
+  border-color: #ddd;
+}
+ 
+header .hide-completed {
+  float: right;
+}
+ 
+.toggle-private {
+  margin-left: 5px;
+}
+
+.wrapper {    
+  margin-top: 80px;
+  margin-bottom: 20px;
+}
+
+.form-signin {
+  max-width: 420px;
+  padding: 30px 38px 66px;
+  margin: 0 auto;
+  background-color: #eee;
+  border: 3px dotted rgba(0,0,0,0.1);  
+  }
+
+.form-signin-heading {
+  text-align:center;
+  margin-bottom: 30px;
+}
+
+.form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+}
+
+input[type="password"] {
+  margin-bottom: 20px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+ 
+@media (max-width: 600px) {
+  li {
+    padding: 12px 15px;
+  }
+ 
+  .search {
+    width: 150px;
+    clear: both;
+  }
+ 
+  .new-task input {
+    padding-bottom: 5px;
+  }
+}

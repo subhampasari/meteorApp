@@ -1,0 +1,95 @@
+<template name ="manager_home">
+	{{#if isInRole 'manager'}}
+		{{> manager_tabs}}
+	{{/if}}
+</template>
+
+<template name = "manager_tabs">
+	<ul class="nav nav-tabs container nav-fill">
+		<li class="active"><a data-toggle="tab" href="#client_requests">Client Requests</a></li>
+		<li><a data-toggle="tab" href="#employee_list">Employee List</a></li>
+		<li><a data-toggle="tab" href="#add_employee">+ Employee</a></li>
+	</ul>
+
+	<div class="tab-content container">
+		<div id="client_requests" class="tab-pane fade in active">
+			{{> client_requests}}
+		</div>
+
+		<div id="employee_list" class="tab-pane fade">
+			{{> employee_list}}
+		</div>
+
+		<div id="add_employee" class="tab-pane fade">
+			{{> add_employee}}
+		</div>
+	</div>
+</template>
+
+<template name = "client_requests">
+	<h2>Client Requests</h2>
+
+	<div class="container">
+		<header>
+			<h1>Todo List ( Pending Tasks - {{incompleteCount}} )</h1>
+			<label class="hide-completed">
+				<input type="checkbox" />
+				Hide Completed Tasks
+			</label>
+		</header>
+
+		<ul class="list-group">
+			{{#each tasks}}
+				<li class="list-group-item"><strong>{{> all_task}}</strong></li>
+			{{/each}}
+		</ul>
+
+		<!-- <ul>
+			{{#each tasks}}
+				{{> all_task}}
+			{{/each}}
+		</ul> -->
+	</div>
+</template>
+
+<template name = "employee_list">
+	<h2>Employee list</h2>
+
+	<ul class="list-group">
+		{{#each users}}
+			<li class="list-group-item"><strong>{{email}}</strong></li>
+		{{/each}}
+	</ul>
+
+	<!-- {{#each users}}
+		<strong>{{email}}</strong> <br>
+	{{/each}} -->
+
+</template>
+
+<template name = "add_employee">
+	<h2>Add Employee</h2>
+	<div class="float">
+        <form class="form" action="">
+            <div class="form-group">
+                <label for="username" class="text-white">Email:</label><br>
+                <input type="email" name="email" id="username" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="password" class="text-white">Password:</label><br>
+                <input type="password" name="password" id="password" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="submit" name="submit" class="btn btn-info btn-md add_button" value="Register Employee">
+            </div>
+        </form>
+    </div>
+
+</template>
+
+<template name="all_task">
+	<li class="{{#if checked}}checked{{/if}}">
+		<span class="text">{{text}}</span>
+		<a class="assign_task">Assign</a>
+	</li>
+</template>

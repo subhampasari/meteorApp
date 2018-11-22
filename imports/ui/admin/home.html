@@ -1,0 +1,87 @@
+<template name ="admin_home">
+	{{#if isInRole 'admin'}}
+		<div class="container">	
+			<button class="add_client btn btn-default col-md-6">+ Client</button>
+			<button class="add_manager btn btn-default col-md-6">+ Manager</button>
+		</div>
+
+		{{> admin_tabs}}
+
+		<!-- <div class="container-fluid" style="background-color:#000000;color:#fff;height:200px;">
+			<h1>Mergerware Admin!</h1>
+		</div> -->
+
+<!-- Second Sample -->
+		<!-- <nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="197">
+			<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button> -->
+				<!-- <a class="navbar-brand" href="#">WebSiteName</a> -->
+			<!-- </div>
+			<div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav">
+						<li><a href="#all_clients">Clients</a></li>
+						<li><a href="#all_managers">Managers</a></li>
+						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Add<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#add_client" class="add_client">+ Client</a></li>
+								<li><a href="#add_manager" class="add_manager">+ Manager</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+			</div>
+		</nav>
+
+		<div id="all_clients" class="container-fluid">
+			{{> clients_list}}
+		</div>
+
+		<div id="all_managers" class="container-fluid">
+			{{> managers_list}}
+		</div> -->
+
+		
+	
+	{{/if}}
+</template>
+
+<template name = "admin_tabs">
+	<ul class="nav nav-tabs container nav-fill">
+		<li class="active"><a data-toggle="tab" href="#Clients">Clients</a></li>
+		<li><a data-toggle="tab" href="#Managers">Managers</a></li>
+	</ul>
+
+	<div class="tab-content container">
+		<div id="Clients" class="tab-pane fade in active">
+			<p>All your clients</p>
+			{{> clients_list}}
+		</div>
+		<div id="Managers" class="tab-pane fade">
+			<p>All your managers</p>
+			{{> managers_list}}
+		</div>
+	</div>
+</template>
+
+<template name = "clients_list">
+	<ul class="list-group">
+		{{#each users}}
+			<li class="list-group-item"><strong>{{email}}</strong></li>
+		{{/each}}
+	</ul>
+</template>
+
+<template name = "managers_list">
+	<ul class="list-group">
+		{{#each users}}
+			<li class="list-group-item"><strong>{{email}}</strong></li>
+		{{/each}}
+	</ul>
+</template>
