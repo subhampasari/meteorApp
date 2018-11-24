@@ -13,18 +13,24 @@ Template.employee_page.onCreated(function bodyOnCreated() {
 Template.employee_page.helpers({
 	tasks() {
 		const instance = Template.instance();
-		// Need to see this later after adding user specific permissions
-		if (instance.state.get('hideCompleted')) {
-			// If hide completed is checked, filter tasks
-			return Tasks.find({ checked: { $ne: true } }, { sort: { createdAt: -1 } });
+
+		if ( instance.state.get( 'hideCompleted' ) ) {
+
+			return Tasks.find({ 
+				$and : [
+						{ checked: { $ne: true } },
+						{ assigned_to : Meteor.user().emails[0].address }
+				],
+			}
+			, { sort: { createdAt: -1 } });
 		}
-		// Otherwise, return all of the tasks
-		return Tasks.find({}, { sort: { createdAt: -1 } });
+		return Tasks.find({ assigned_to : Meteor.user().emails[0].address }, { sort: { createdAt: -1 } });
 	},
   incompleteCount() {
     return Tasks.find({
       $and: [
-        { checked: { $ne: true } }
+        { checked: { $ne: true } },
+        { assigned_to : Meteor.user().emails[0].address }
       ],
     }).count();
   },

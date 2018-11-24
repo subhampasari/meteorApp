@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+import { Tasks } from './../imports/api/tasks.js';
 import './../imports/api/tasks.js';
 import './../imports/api/users.js';
 
@@ -40,6 +41,16 @@ Meteor.methods({
 				});
 		Roles.addUsersToRoles(id, ['employee']);
 		
+	},
+	assign_task_to_employee( task_id, employee ) {
+
+		user =  Accounts.findUserByEmail(employee) ;
+		if( Roles.userIsInRole( user._id, ['employee'] ) )
+			Tasks.update({_id: task_id}, { $set : { "assigned_to" : employee} });
+		else
+		{
+			throw new Meteor.Error('Tasks can only be assigned to employees!');
+		}
 	}
 })
 

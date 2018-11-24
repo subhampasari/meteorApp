@@ -43,12 +43,6 @@
 				<li class="list-group-item"><strong>{{> all_task}}</strong></li>
 			{{/each}}
 		</ul>
-
-		<!-- <ul>
-			{{#each tasks}}
-				{{> all_task}}
-			{{/each}}
-		</ul> -->
 	</div>
 </template>
 
@@ -60,10 +54,6 @@
 			<li class="list-group-item"><strong>{{email}}</strong></li>
 		{{/each}}
 	</ul>
-
-	<!-- {{#each users}}
-		<strong>{{email}}</strong> <br>
-	{{/each}} -->
 
 </template>
 
@@ -90,6 +80,8 @@
 <template name="all_task">
 	<li class="{{#if checked}}checked{{/if}}">
 		<span class="text">{{text}}</span>
-		<a class="assign_task">Assign</a>
+		{{#unless checked}}
+			<a class="assign_task">Assign</a>
+		{{/unless}}
 	</li>
 </template>

@@ -62,15 +62,58 @@ Template.employee_list.helpers({
 		return Roles.getUsersInRole(['employee'])
 	},
 	email() {
-		// if( Roles.userIsInRole( this._id, ['manager']) )
-			return this.emails[0].address; 
+		return this.emails[0].address; 
 	}
 })
+
+var form = $('\
+			<form class="form" role="form">\
+				<div class="form-group">\
+					<label for="email">Employee Email address : </label>\
+					<input type="email" class="form-control" id="email" name="email" placeholder="Enter email" value=""></input>\
+				</div>\
+				\
+			</form>\
+			');
 
 Template.all_task.events({
 	'click .assign_task' : function( event ) {
 		event.preventDefault();
-		console.log( event.target );
+		// console.log( this._id );
+		var task_id = this._id;
+
+		var client_modal  = bootbox.dialog({
+			message: form,
+			title: "Assign \"" + this.text + "\" to employee",
+			buttons : [{
+				label: "Save",
+            	className: "btn btn-primary pull-left",
+            	callback: function() {
+            		var employee = form.find('input[name=email]').val();
+
+            		
+
+					Meteor.call( 'assign_task_to_employee', task_id, employee, function( error, success ) {
+						if( error )
+            				sAlert.error( 'Error Assigning Task!' + error );
+						else
+							sAlert.success( 'Successfully Assigned Task!', { timeout : 3000 } );
+					} );
+            	}
+			},
+			{
+				label: "Close",
+	            className: "btn btn-default pull-left",
+	            callback: function() {}
+			}],
+			show: false,
+			onEscape: function() {
+	        	client_modal.modal("hide");
+	        }
+	    });
+		client_modal.modal("show");
+
+
 	}
 })
 
